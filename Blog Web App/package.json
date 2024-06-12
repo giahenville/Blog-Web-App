@@ -1,0 +1,12 @@
+{
+  "name": "Blog Web Application",
+  "version": "1.0.0",
+  "description": "Blog Web Application",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gia Henville",
+  "license": "ISC"
+}
