@@ -12,16 +12,16 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 
-app.get("/nav/about", (req, res) => {
-    res.render("nav/about.ejs");
+app.get("/about", (req, res) => {
+    res.render("about.ejs");
 });
 
-app.get("/nav/create", (req, res) => {
-    res.render("nav/create.ejs");
+app.get("/create", (req, res) => {
+    res.render("create.ejs");
 });
 
-app.get("/nav/profile", (req, res) => {
-    res.render("nav/profile.ejs");
+app.get("/profile", (req, res) => {
+    res.render("profile.ejs");
 });
 
 app.listen(port, () => {
