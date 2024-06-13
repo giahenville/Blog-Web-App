@@ -9,4 +9,25 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+    background-color: #9E8576;
+}
+
+img {
+    width: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #2A2E45;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9BA2FF; 
+    text-decoration:none; 
+    cursor:pointer;  
 }

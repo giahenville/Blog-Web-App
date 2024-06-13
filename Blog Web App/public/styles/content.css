@@ -17,3 +17,7 @@
 .footerSection {
     width: 20rem;
 }
+
+#copyright {
+    text-align: center;
+}
