@@ -7,16 +7,17 @@
 
   <!-- Add the link to the CSS stylesheet here -->
   <!-- Hint: the link is relative to the public folder -->
-   <!-- <link rel="stylesheet" href="styles/main.css"> -->
+   <link rel="stylesheet" href="styles/content.css">
+   <link rel="stylesheet" href="styles/layout.css">
   <title>Blog Web Application</title>
 </head>
 <nav>
-  <img src="../images/logo.png" alt="Logo" id="logo">
+  <img src="images/logo.png" alt="Logo" id="logo">
     <ul>
-        <li href="/index.ejs" class="nav">Home</li>
-        <li href="/nav/about.ejs" class="nav">About</li>
-        <li href="/nav/create.ejs" class="nav">Create</li>
-        <li href="/nav/profile.ejs" class="nav">John Smith</li>
+        <a href="/"> <li class="nav"> Home </li> </a>
+        <a href="/about"> <li class="nav"> About </li> </a>
+        <a href="/create"> <li class="nav"> Create </li> </a>
+        <a href="/profile"> <li class="nav"> John Smith </li> </a>
     </ul>
 </nav>
 <body>
