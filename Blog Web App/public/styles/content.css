@@ -2,15 +2,18 @@
     width: 10rem;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-ul {
+#navUl{
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
     width: 30rem;
+}
+
+#footerInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerSection {
+    width: 20rem;
 }

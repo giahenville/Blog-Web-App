@@ -2,9 +2,45 @@
 
 <footer>
   <!-- Step 4 - Add a dynamic year to the footer using JS. -->
+  <div id="footerInfo">
+    <section class="footerSection">
+      <img src="images/logo.png" alt="Logo" id="logo">
+      <p>Welcome to BlogBunny, your ultimate blogging companion. BlogBunny offers a user-friendly interface, customizable themes, and a powerful text editor to make your blogging experience effortless and enjoyable. Engage with your readers through comments and social sharing, and boost your visibility with built-in SEO tools. Track your blog’s performance with our detailed analytics dashboard. Join BlogBunny today and elevate your blogging journey!</p>
+
+      
+      <p> Phone symbol: 123 - 456 - 7893</p>
+      <p> Email symbol: info@fictionalBlog.com </p>
+      
+      <ul>
+        <a href=""> <img src="" alt="Facebook Link"> </a>
+        <a href=""> <img src="" alt="Instagram Link"> </a>
+        <a href=""> <img src="" alt="X Link"> </a>
+        <a href=""> <img src="" alt="Youtube Link"> </a>
+      </ul>
+    </section>
+
+    <section class="footerSection">
+      <h3>Quick Links</h3>
+      <ul>
+        <li> <a href=""> Events </a></li>
+        <li> <a href=""> Contact Us </a></li>
+        <li> <a href=""> Mentors </a></li>
+        <li> <a href=""> Galleries </a></li>
+        <li> <a href=""> Terms and Conditions </a></li>
+      </ul>
+    </section>
+
+    <section class="footerSection">
+      <h3>Contact Us </h3>
+      <form action="" method="POST">
+        <input type="text" name="email" placeholder="johnsmith@gmail.com">
+        <input type="text" name="message" placeholder="enter your message...">
+      </form>
+    </section>
+  </div>
 
   <% const currentYear = new Date().getFullYear(); %>
-  <p>Copyright © <%= currentYear %> </p>
+  <p>Copyright © <%= currentYear %> | Designed by Gia Henville</p>
 </footer>
 </body>
 
