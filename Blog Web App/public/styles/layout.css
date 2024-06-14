@@ -2,6 +2,7 @@ body {
     color: #2A2E45;
     margin: 0;
     height: 100vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 nav {
@@ -19,6 +20,10 @@ footer {
     background-color: #9E8576;
 }
 
+h1, h2, h3, h4, h5 {
+    font-family: serif;
+    color: #000766;
+}
 img {
     width: 1.5rem;
 }

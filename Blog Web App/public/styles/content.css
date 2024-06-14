@@ -10,15 +10,31 @@
 }
 
 /* POST SLIDER */
+.slider-title {
+    text-align: center;
+    margin: 30px auto;
+}
 .slider-container {
     display: flex;
+    position: relative;
     align-items: center;
     border: 1px solid green;
 }
 
-.prev, .next {
-    height: 40px;
-    width: auto;
+.slider-container .next {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 3rem;
+    cursor: pointer;
+}
+
+.slider-container .prev {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 3rem;
+    cursor: pointer;
 }
 .slider-container .post-container{
     /* display: flex; */
