@@ -4,20 +4,54 @@
 <section class="slider-container">
     
     <img src="images/back.png" class="prev"> 
-    
+    <img src="images/forward.png" class="next">
+
     <div class="post-container">
-        <div class="post">1</div>
-        <div class="post">2</div>
-        <div class="post">3</div>
-        <div class="post">4</div>
-        <div class="post">5</div>
+        <article class="post">
+            <img src="https://media.istockphoto.com/id/1129332575/photo/favorite-classical-music-close-up-view-of-gentle-female-hands-playing-a-melody-on-piano-while.jpg?s=612x612&w=0&k=20&c=GJEJTdGtmgHpKjDL7BE9KO2diJNQ4lPinInWiJAOSCQ=">
+            <section class="post-info">
+                <h4><a href="" >Learning how to learn will change your life!</a></h4>
+                <span><img src="" class="user-icon" alt="user icon">Gia Henville</span>
+                <span>Jun 14, 2024</span>
+            </section>
+        </article>
+        <article class="post">
+            <img src="https://img.contractingbusiness.com/files/base/ebm/contractingbusiness/image/2022/12/SUCCESS_dreamstime_l_84946026.63923712e0ebb.png?auto=format,compress&fit=crop&q=45&h=356&height=356&w=640&width=640">
+            <section class="post-info">
+                <h4><a href="" >Learning how to learn will change your life!</a></h4>
+                <span><img src="" class="user-icon" alt="user icon">Gia Henville</span>
+                <span>Jun 14, 2024</span>
+            </section>
+        </article>
+        <article class="post">
+            <img src="https://www.mantellassociates.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMU90RlE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9655692b24255c88b03daa607c540f45fba7298a/Blog%20Header%20Image%20-%20Website%20(19).png">
+            <section class="post-info">
+                <h4><a href="" >Learning how to learn will change your life!</a></h4>
+                <span><img src="" class="user-icon" alt="user icon">Gia Henville</span>
+                <span>Jun 14, 2024</span>
+            </section>
+        </article>
+        <article class="post">
+            <img src="https://t4.ftcdn.net/jpg/05/52/94/89/360_F_552948967_rfWkVCstu3t9ypSnpt2ZePVnuqoi6D6o.jpg">
+            <section class="post-info">
+                <h4><a href="" >Learning how to learn will change your life!</a></h4>
+                <span><img src="" class="user-icon" alt="user icon">Gia Henville</span>
+                <span>Jun 14, 2024</span>
+            </section>
+        </article>
+        <article class="post">
+            <img src="https://www.harryanddavid.com/blog/wp-content/uploads/2022/07/cooking-therapy-hero.jpeg">
+            <section class="post-info">
+                <h4><a href="" >Learning how to learn will change your life!</a></h4>
+                <span><img src="" class="user-icon" alt="user icon">Gia Henville</span>
+                <span>Jun 14, 2024</span>
+            </section>
+        </article>
     </div>
     <img src="images/forward.png" class="next">
 </section>
 
 
-<h2>Related Posts</h2>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel amet laudantium architecto modi iure. Modi voluptate nam debitis sunt laborum, voluptas sit sint repudiandae. Iste ea vero hic a non?</p>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,6 +66,34 @@ $(document).ready(function() {
         autoplaySpeed: 2000,
         nextArrow: $('.next'),
         prevArrow: $('.prev'),
+        responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
     });
 })
 </script>
