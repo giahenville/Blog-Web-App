@@ -1,4 +1,52 @@
 
 <%- include("partials/header.ejs") %> 
-<h1>Hello from create.ejs!</h1>
+<h1>Create New Post</h1>
+
+<form action="/submit" method="POST">
+    <section class="title-section">
+        <label>Title</label>
+        <input type="text" name="title" class="text-input">
+    </section>
+    <section class="body-section">
+        <label for="">Body</label>
+        <textarea name="body" id="body"></textarea>
+    </section>
+    <section class="select-section">
+        <label>Topic</label>
+        <select name="topic">
+            <option value="Poetry">Poetry</option>
+            <option value="Life">Life</option>
+            <option value="Travel">Travel</option>
+            <option value="Technology">Technology</option>
+        </select>
+    </section>
+
+    <button type="submit" class="btn btn-big">Create Post</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script 
+src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js">
+</script>
+
+<script>
+    $(document).ready(function() {
+        ClassicEditor
+        .create( document.querySelector( '#body' ), {
+            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+                ]
+            }
+        } )
+        .catch( error => {
+            console.log( error );
+        } );
+    });
+</script>
+
 <%- include("partials/footer.ejs") %> 
