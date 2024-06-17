@@ -24,6 +24,15 @@ app.get("/profile", (req, res) => {
     res.render("profile.ejs");
 });
 
+app.post("/submit", (req, res) => {
+    const title = req.body["title"];
+    const body = req.body["body"];
+    const topic = req.body["topic"];
+
+    res.render("profile.ejs", {title : title, body : body, topic : topic});
+    
+});
+
 app.listen(port, () => {
     console.log("Blog Web App running on port ", port);
 });
