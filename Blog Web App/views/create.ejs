@@ -5,11 +5,15 @@
 <form action="/submit" method="POST">
     <section class="title-section">
         <label>Title</label>
-        <input type="text" name="title" class="text-input">
+        <input type="text" name="title" class="text-input" required>
     </section>
     <section class="body-section">
         <label for="">Body</label>
         <textarea name="body" id="body"></textarea>
+    </section>
+    <section class="image-section">
+        <label>Image</label>
+        <input type="file" name="image" class="text-input">
     </section>
     <section class="select-section">
         <label>Topic</label>

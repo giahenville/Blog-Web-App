@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
+const posts = [];
 
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
@@ -21,16 +22,19 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-    res.render("profile.ejs");
+    res.render("profile.ejs", {posts: posts});
 });
 
 app.post("/submit", (req, res) => {
     const title = req.body["title"];
     const body = req.body["body"];
+    const image = req.body["image"];
     const topic = req.body["topic"];
 
-    res.render("profile.ejs", {title : title, body : body, topic : topic});
-    
+    const newPost = { title: title, body: body, image: image, topic: topic };
+    posts.push(newPost);
+
+    res.redirect("/profile");
 });
 
 app.listen(port, () => {

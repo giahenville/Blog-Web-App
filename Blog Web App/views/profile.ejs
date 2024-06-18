@@ -1,7 +1,19 @@
 
 <%- include("partials/header.ejs") %> 
-<h1>Hello from profile.ejs!</h1>
-<%= title %>
-<%= body %>
-<%= topic %>
+<h1>Posts</h1>
+<ul>
+    <% posts.forEach((post, index) => { %>
+        <li>
+            <span> Post: <%= index + 1 %> Title: <%= post.title %></span>
+            <p>Body: <%= post.body %></p>
+            <% if (post.image) { %>
+                <img src="<%= post.image %>" alt="Post Image">
+            <% } %>
+            <p>Topic: <%= post.topic %></p>
+        </li>
+    <% }); %>
+</ul>
+
+
+
 <%- include("partials/footer.ejs") %> 
