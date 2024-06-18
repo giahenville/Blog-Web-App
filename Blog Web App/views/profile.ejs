@@ -2,16 +2,17 @@
 <%- include("partials/header.ejs") %> 
 <h1>Posts</h1>
 <% if (locals.totalPosts) {%>
-    <h3>Total Posts: <%= totalPosts %></h3>
+    <h4>Total Posts: <%= totalPosts %></h4>
 <%}%>
-<ol>
-    <% posts.forEach((post, index) => { %>
+<ul>
+    <% posts.forEach((post) => { %>
         <li>
-            <span> Title: <%= post.title %></span>
-            <p>Topic: <%= post.topic %></p>
+            <h2> Title: <%= post.title %></h2>
+            <h2>Topic: <%= post.topic %></h2>
+            <h5>Date Created: <%= postDate %></h5>
         </li>
     <% }); %>
-</ol>
+</ul>
 
 
 

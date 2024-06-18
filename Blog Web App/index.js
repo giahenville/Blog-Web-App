@@ -6,6 +6,7 @@ const port = 3000;
 
 const posts = [];
 let totalPosts = 0;
+let postDate = new Date().toDateString(); 
 
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
@@ -23,7 +24,7 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-    res.render("profile.ejs", {posts: posts, totalPosts: totalPosts});
+    res.render("profile.ejs", {posts: posts, totalPosts: totalPosts, postDate: postDate});
 });
 
 app.post("/submit", (req, res) => {
