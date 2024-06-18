@@ -1,18 +1,17 @@
 
 <%- include("partials/header.ejs") %> 
 <h1>Posts</h1>
-<ul>
+<% if (locals.totalPosts) {%>
+    <h3>Total Posts: <%= totalPosts %></h3>
+<%}%>
+<ol>
     <% posts.forEach((post, index) => { %>
         <li>
-            <span> Post: <%= index + 1 %> Title: <%= post.title %></span>
-            <p>Body: <%= post.body %></p>
-            <% if (post.image) { %>
-                <img src="<%= post.image %>" alt="Post Image">
-            <% } %>
+            <span> Title: <%= post.title %></span>
             <p>Topic: <%= post.topic %></p>
         </li>
     <% }); %>
-</ul>
+</ol>
 
 
 

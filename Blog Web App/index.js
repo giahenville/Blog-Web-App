@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 
 const posts = [];
+let totalPosts = 0;
 
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
@@ -22,7 +23,7 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-    res.render("profile.ejs", {posts: posts});
+    res.render("profile.ejs", {posts: posts, totalPosts: totalPosts});
 });
 
 app.post("/submit", (req, res) => {
@@ -33,6 +34,7 @@ app.post("/submit", (req, res) => {
 
     const newPost = { title: title, body: body, image: image, topic: topic };
     posts.push(newPost);
+    totalPosts++;
 
     res.redirect("/profile");
 });
