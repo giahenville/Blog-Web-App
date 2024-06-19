@@ -19,6 +19,13 @@
     width: 30rem;
 }
 
+/* pushes footer on create.ejs file to the bottom of page */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 /* profile page */
 #profile {
     overflow-y:auto;
@@ -60,7 +67,7 @@
 
 .slider-container .post-container .post {
     display: inline-block;
-    background-color: white;
+    background-color: rgb(248, 248, 248);
     width: 300px;
     height: 345px;
     margin: 0px 10px;

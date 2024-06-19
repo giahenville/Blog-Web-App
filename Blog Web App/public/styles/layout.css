@@ -3,16 +3,16 @@ body {
     flex-direction: column;
     justify-content: space-between;
     color: #2A2E45;
-    background-color: rgb(247, 247, 247);
     margin: 0;
-    height: 100%;
+    height: 100vh;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 footer {
-    position: fixed;
+    /* position: fixed; */
+/*     
     left: 0;
-    bottom: 0;
+    bottom: 0; */
     width: 100%;
     background-color: #9E8576;
     font-size: small;

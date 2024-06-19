@@ -1,32 +1,34 @@
 
 <%- include("partials/header.ejs") %> 
-<h1>Create New Post</h1>
+    <h1>Create New Post</h1>
 
-<form action="/submit" method="POST">
-    <section class="title-section">
-        <label>Title</label>
-        <input type="text" name="title" class="text-input" required>
-    </section>
-    <section class="body-section">
-        <label for="">Body</label>
-        <textarea name="body" id="body"></textarea>
-    </section>
-    <section class="image-section">
-        <label>Image</label>
-        <input type="file" name="image" class="text-input">
-    </section>
-    <section class="select-section">
-        <label>Topic</label>
-        <select name="topic">
-            <option value="Poetry">Poetry</option>
-            <option value="Life">Life</option>
-            <option value="Travel">Travel</option>
-            <option value="Technology">Technology</option>
-        </select>
-    </section>
+    <form action="/submit" method="POST">
+        <section class="title-section">
+            <label>Title</label>
+            <input type="text" name="title" class="text-input" required>
+        </section>
+        <section class="body-section">
+            <label for="">Body</label>
+            <textarea name="body" id="body"></textarea>
+        </section>
+        <section class="image-section">
+            <label>Image</label>
+            <input type="file" name="image" >
+        </section>
+        <section class="select-section">
+            <label>Topic</label>
+            <select name="topic ">
+                <option value="Poetry">Poetry</option>
+                <option value="Life">Life</option>
+                <option value="Travel">Travel</option>
+                <option value="Technology">Technology</option>
+            </select>
+        </section>
 
-    <button type="submit" class="btn btn-big">Create Post</button>
-</form>
+        <button type="submit" class="btn btn-big">Create Post</button>
+    </form>
+
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

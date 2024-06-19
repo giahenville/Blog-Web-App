@@ -13,12 +13,48 @@
 </head>
 
 <body>
-  <nav id="nav" class="navbar">
+  <!-- <nav id="nav" >
     <img src="images/logo.png" alt="Logo" id="logo">
-      <ul id="navUl">
-          <a href="/"> <li class="nav" title="Home Page"> Home </li> </a>
+      <ul id="navUl nav nav-tabs">
+          <a href="/"> <li class="nav-item" title="Home Page"> Home </li> </a>
           <a href="/about"> <li class="nav" title="About Page"> About </li> </a>
           <a href="/create"> <li class="nav" title="Create Post"> Create </li> </a>
           <a href="/profile"> <li class="nav" title="Profile"> John Smith </li> </a>
       </ul>
+  </nav> -->
+<div class="page-container">
+
+  <nav id="nav">
+    <img src="images/logo.png" alt="Logo" id="logo">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/create">Create</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+    </ul>
   </nav>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Script to highlight active tab -->
+<script>
+  // Get the current URL path
+  var path = window.location.pathname;
+
+  // Add 'active' class to corresponding nav-link
+  $('.nav-link').each(function () {
+    var href = $(this).attr('href');
+    if (path === href) {
+      $(this).addClass('active');
+    }
+  });
+</script>
