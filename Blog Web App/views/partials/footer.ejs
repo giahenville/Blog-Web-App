@@ -1,52 +1,11 @@
-  <!-- <footer>
-    
-    <div id="footerInfo">
-      <section class="footerSection">
-        <img src="images/logo.png" alt="Logo" id="logo">
-        <p>BlogBunny offers a user-friendly interface, customizable themes, and a powerful text editor to make your blogging experience effortless and enjoyable. Join BlogBunny today and elevate your blogging journey!</p>
-
-        
-        <p> <img src="images/telephone.png" alt="Phone symbol"> 123 - 456 - 7893</p>
-        <p> <img src="images/mail.png" alt="Email symbol"> info@fictionalBlog.com </p>
-        
-        <ul>
-          <a href=""> <img src="images/facebook.png" alt="Facebook Link"> </a>
-          <a href=""> <img src="images/instagram.png" alt="Instagram Link"> </a>
-          <a href=""> <img src="images/twitter.png" alt="X Link"> </a>
-          <a href=""> <img src="images/youtube.png" alt="Youtube Link"> </a>
-        </ul>
-      </section>
-
-      <section class="footerSection">
-        <h3>Quick Links</h3>
-        <ul>
-          <li> <a href=""> Events </a></li>
-          <li> <a href=""> Contact Us </a></li>
-          <li> <a href=""> Mentors </a></li>
-          <li> <a href=""> Galleries </a></li>
-          <li> <a href=""> Terms and Conditions </a></li>
-        </ul>
-      </section>
-
-      <section class="footerSection">
-        <h3>Contact Us </h3>
-        <form action="" method="POST">
-          <input type="text" name="email" placeholder="johnsmith@gmail.com">
-          <input type="text" name="message" placeholder="enter your message...">
-        </form>
-      </section>
-    </div> -->
-
-
-
 <footer class="text-white text-center text-lg-start bg-info">
   <!-- Grid container -->
-  <div class="container p-4">
+  <div class="container ">
     <!--Grid row-->
     <div class="row mt-4">
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-4">About company</h5>
+        <h5 class="text-uppercase mb-4">About BlogBunny</h5>
 
         <p>
           At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
@@ -59,57 +18,57 @@
         </p>
 
         <div class="mt-4">
-          <!-- Facebook -->
-          <a type="button" class="btn btn-floating btn-dark btn-lg"> <img src="images/facebook.png" alt="Facebook Link"> </a>
-          <!-- Dribbble -->
-          <a type="button"> <img src="images/instagram.png" alt="Instagram Link"> </a>
-          <!-- Twitter -->
-          <a type="button" > <img src="images/twitter.png" alt="X Link"> </a>
-          <!-- Google + -->
-          <a type="button"> <img src="images/youtube.png" alt="Youtube Link"> </a>
-          <!-- Linkedin -->
+          
+          <a type="button" class="btn btn-floating btn-dark btn-lg rounded-circle" title="Facebook"> <img src="images/facebook.png" alt="Facebook Link"> </a>
+          
+          <a type="button" class="btn btn-floating btn-dark btn-lg rounded-circle" title="Instagram"> <img src="images/instagram.png" alt="Instagram Link"> </a>
+          
+          <a type="button" class="btn btn-floating btn-dark btn-lg rounded-circle" title="Twitter / X"> <img src="images/twitter.png" alt="X Link"> </a>
+         
+          <a type="button" class="btn btn-floating btn-dark btn-lg rounded-circle" title="Youtube"> <img src="images/youtube.png" alt="Youtube Link"> </a>
+          
         </div>
       </div>
-      <!--Grid column-->
 
       <!--Grid column-->
       <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-        
-        <ul class="fa-ul" style="margin-left: 1.65em;">
+        <h5 class="text-uppercase mb-4">Contact Us</h5>
+        <ul class="fa-ul list-unstyled">
           <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Warsaw, 00-967, Poland</span>
+            <span>Warsaw, 00-967, Poland</span>
           </li>
           <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">contact@example.com</span>
+            <span> contact@example.com</span>
           </li>
           <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 48 234 567 88</span>
+            <span> + 48 234 567 88</span>
           </li>
         </ul>
       </div>
-      <!--Grid column-->
 
       <!--Grid column-->
+      
       <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-4">Opening hours</h5>
-
-        <table class="table text-center text-white">
-          <tbody class="fw-normal">
-            <tr>
-              <td>Mon - Thu:</td>
-              <td>8am - 9pm</td>
-            </tr>
-            <tr>
-              <td>Fri - Sat:</td>
-              <td>8am - 1am</td>
-            </tr>
-            <tr>
-              <td>Sunday:</td>
-              <td>9am - 10pm</td>
-            </tr>
-          </tbody>
-        </table>
+        <h5 class="text-uppercase mb-4">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href="#" class="text-white">Events</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="text-white">Contact Us</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="text-white">Mentors</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="text-white">Galleries</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="text-white">Terms and Conditions</a>
+          </li>
+        </ul>
       </div>
+      
       <!--Grid column-->
     </div>
     <!--Grid row-->
@@ -117,9 +76,8 @@
 
     <!-- Copyright -->
     <% const currentYear = new Date().getFullYear(); %>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © <%= currentYear %> 
-      <a class="text-white" href="https://mdbootstrap.com/">Blog Bunny | Gia Henville</a>
+    <div class="text-center p-3 mt-5" >
+      © <%= currentYear %> BlogBunny | Gia Henville 
     </div>
     <!-- Copyright -->
   </footer>

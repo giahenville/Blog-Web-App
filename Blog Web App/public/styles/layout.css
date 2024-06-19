@@ -8,19 +8,6 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* footer {
-    width: 100%;
-    background-color: #9E8576;
-    font-size: small;
-    margin-bottom: 0px;
-    padding: 0px;
-} */
-
-h1, h2, h3, h4, h5 {
-    font-family: serif;
-    color: #000766;
-    margin: 5px;
-}
     
 img {
     width: 1rem;
@@ -29,17 +16,6 @@ img {
 form {
     display: flex;
     flex-direction: column;
-}
-
-a {
-    color: #2A2E45;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #fcfcfc; 
-    text-decoration:none; 
-    cursor:pointer;  
 }
 
 ul {
