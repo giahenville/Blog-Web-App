@@ -1,29 +1,28 @@
 
 <%- include("partials/header.ejs") %> 
 
-    <div id="profile" class="container">
+  
 
-        <h1>Posts</h1>
+    <h1>Posts</h1>
 
-        <input type="search" placeholder="Search by title..." id="search-bar">
+    <input type="search" placeholder="Search by title..." id="search-bar">
 
-        <!-- Updates total posts -->
-        <% if (locals.totalPosts) {%>
-            <h4>Total Posts: <%= totalPosts %></h4>
-        <%}%>
-        
-        <!-- Dynamically creates posts -->
-        <ul id="posts-list">
-            <% posts.forEach((post) => { %>
-                <li class="post">
-                    <h2 class="title"> Title: <%= post.title %></h2>
-                    <h2 class="topic">Topic: <%= post.topic %></h2>
-                    <span>Date Created: <%= postDate %></span>
-                </li>
-            <% }); %>
-        </ul>
+    <!-- Updates total posts -->
+    <% if (locals.totalPosts) {%>
+        <h4>Total Posts: <%= totalPosts %></h4>
+    <%}%>
+    
+    <!-- Dynamically creates posts -->
+    <ul id="posts-list">
+        <% posts.forEach((post) => { %>
+            <li class="post">
+                <h2 class="title"> Title: <%= post.title %></h2>
+                <h2 class="topic">Topic: <%= post.topic %></h2>
+                <span>Date Created: <%= postDate %></span>
+            </li>
+        <% }); %>
+    </ul>
 
-    </div>
 </div>
  <!-- Client-Side JavaScript -->
  <script>
