@@ -1,18 +1,23 @@
 
 <%- include("partials/header.ejs") %> 
-<h1>Posts</h1>
-<% if (locals.totalPosts) {%>
-    <h4>Total Posts: <%= totalPosts %></h4>
-<%}%>
-<ul>
-    <% posts.forEach((post) => { %>
-        <li>
-            <h2> Title: <%= post.title %></h2>
-            <h2>Topic: <%= post.topic %></h2>
-            <h5>Date Created: <%= postDate %></h5>
-        </li>
-    <% }); %>
-</ul>
+<div id="profile">
+    <h1>Posts</h1>
+    <% if (locals.totalPosts) {%>
+        <h4>Total Posts: <%= totalPosts %></h4>
+    <%}%>
+    <ul>
+        <% posts.forEach((post) => { %>
+            <li>
+                <h2> Title: <%= post.title %></h2>
+                <h2>Topic: <%= post.topic %></h2>
+                <span>Date Created: <%= postDate %></span>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+
+
+<!-- TODO: add toggle function to organize by creation date or title, add search posts functionality . add scroll for profile posts-->
 
 
 

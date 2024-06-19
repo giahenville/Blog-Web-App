@@ -19,6 +19,9 @@
     width: 30rem;
 }
 
+#profile {
+    overflow-y:auto;
+}
 /* POST SLIDER */
 .slider-title {
     text-align: center;
