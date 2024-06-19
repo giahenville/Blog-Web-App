@@ -8,17 +8,13 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-footer {
-    /* position: fixed; */
-/*     
-    left: 0;
-    bottom: 0; */
+/* footer {
     width: 100%;
     background-color: #9E8576;
     font-size: small;
     margin-bottom: 0px;
     padding: 0px;
-}
+} */
 
 h1, h2, h3, h4, h5 {
     font-family: serif;
