@@ -4,6 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
 
+
 const app = express();
 const port = 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -14,6 +15,10 @@ let totalPosts = 0;
 // Middleware
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
+
+// Serve Bootstrap CSS and JS from node_modules
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 
 // Set the views directory and view engine
 app.set("views", path.join(__dirname, "views"));

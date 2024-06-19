@@ -1,11 +1,18 @@
 
 <%- include("partials/header.ejs") %> 
+
 <div id="profile">
+
     <h1>Posts</h1>
+
     <input type="search" placeholder="Search by title..." id="search-bar">
+
+    <!-- Updates total posts -->
     <% if (locals.totalPosts) {%>
         <h4>Total Posts: <%= totalPosts %></h4>
     <%}%>
+    
+    <!-- Dynamically creates posts -->
     <ul id="posts-list">
         <% posts.forEach((post) => { %>
             <li class="post">
@@ -15,10 +22,8 @@
             </li>
         <% }); %>
     </ul>
+
 </div>
-
-
-<!-- TODO: add toggle function to organize by creation date or title-->
 
  <!-- Client-Side JavaScript -->
  <script>
