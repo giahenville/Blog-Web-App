@@ -2,14 +2,15 @@
 <%- include("partials/header.ejs") %> 
 <div id="profile">
     <h1>Posts</h1>
+    <input type="search" placeholder="Search by title..." id="search-bar">
     <% if (locals.totalPosts) {%>
         <h4>Total Posts: <%= totalPosts %></h4>
     <%}%>
-    <ul>
+    <ul id="posts-list">
         <% posts.forEach((post) => { %>
-            <li>
-                <h2> Title: <%= post.title %></h2>
-                <h2>Topic: <%= post.topic %></h2>
+            <li class="post">
+                <h2 class="title"> Title: <%= post.title %></h2>
+                <h2 class="topic">Topic: <%= post.topic %></h2>
                 <span>Date Created: <%= postDate %></span>
             </li>
         <% }); %>
@@ -17,8 +18,58 @@
 </div>
 
 
-<!-- TODO: add toggle function to organize by creation date or title, add search posts functionality . add scroll for profile posts-->
+<!-- TODO: add toggle function to organize by creation date or title-->
 
+ <!-- Client-Side JavaScript -->
+ <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchBar = document.getElementById("search-bar");
+        const postsList = document.getElementById("posts-list");
+        const posts = document.getElementsByClassName("post");
+
+         // Add event listener to search bar for real-time filtering
+         searchBar.addEventListener("input", function(event) {
+            const searchText = searchBar.value.toLowerCase();
+
+            // Iterate through each post
+            Array.from(posts).forEach(post => {
+                const title = post.querySelector("h2.title").innerText.toLowerCase();
+                const topic = post.querySelector("h2.topic").innerText.toLowerCase();
+                
+                // Check if the title or topic matches the search query
+                if (title.includes(searchText) || topic.includes(searchText)) {
+                    post.style.display = "block"; // Show the post if it matches
+                } else {
+                    post.style.display = "none"; // Hide the post if it doesn't match
+                }
+            });
+         });
+    });
+
+        // searches for posts matching the title or the author
+    searchBar.addEventListener("keyup", () => {
+        const searchText = searchBar.value.toLowerCase(); // Get the value entered in the search bar
+
+        // Iterate through each post
+        Array.from(display.children).forEach(post => {
+            const title = post.querySelector("p.title").innerText.toLowerCase(); 
+            const author = post.querySelector("p.author").innerText.toLowerCase(); 
+            
+            // FIX when x is pressed on input, allow all books to reappear
+            if (!searchText) {
+                post.style.display = "block";
+            }
+
+            // Check if the title or author matches the search query
+            if (title.includes(searchText) || author.includes(searchText)) {
+                post.style.display = "block"; // Show the post card if it matches
+            } else {
+                post.style.display = "none"; // Hide the post card if it doesn't match
+            }
+        });
+    });
+
+</script>
 
 
 <%- include("partials/footer.ejs") %> 

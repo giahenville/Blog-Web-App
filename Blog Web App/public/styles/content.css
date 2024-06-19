@@ -19,9 +19,11 @@
     width: 30rem;
 }
 
+/* profile page */
 #profile {
     overflow-y:auto;
 }
+
 /* POST SLIDER */
 .slider-title {
     text-align: center;
