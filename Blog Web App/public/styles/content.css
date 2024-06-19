@@ -2,22 +2,9 @@
     width: 10rem;
 }
 
-#nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #B2A8C7;
-    margin-bottom: 50px;
-    /* height: 400px; */
-    font-size: larger;
-}
 
-#navUl{
-    display: flex;
-    justify-content: space-evenly;
-    list-style-type: none;
-    width: 30rem;
-}
+
+
 
 /* pushes footer on create.ejs file to the bottom of page */
 .page-container {
@@ -30,6 +17,7 @@
 #profile {
     overflow-y:auto;
 }
+
 
 /* POST SLIDER */
 .slider-title {

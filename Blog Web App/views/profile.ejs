@@ -1,12 +1,12 @@
 
 <%- include("partials/header.ejs") %> 
 
-  
-
+  <div class="posts-container container">
     <h1>Posts</h1>
 
-    <input type="search" placeholder="Search by title..." id="search-bar">
-
+    <input type="search" placeholder="Search by title..." id="search-bar" class="form-control mr-sm-2">
+     
+    
     <!-- Updates total posts -->
     <% if (locals.totalPosts) {%>
         <h4>Total Posts: <%= totalPosts %></h4>
@@ -22,6 +22,9 @@
             </li>
         <% }); %>
     </ul>
+  </div>
+
+
 
 </div>
  <!-- Client-Side JavaScript -->
