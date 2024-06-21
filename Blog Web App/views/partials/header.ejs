@@ -19,98 +19,51 @@
 </head>
 
 <body>
-  <!-- <nav id="nav" >
-    <img src="images/logo.png" alt="Logo" id="logo">
-      <ul id="navUl nav nav-tabs">
-          <a href="/"> <li class="nav-item" title="Home Page"> Home </li> </a>
-          <a href="/about"> <li class="nav" title="About Page"> About </li> </a>
-          <a href="/create"> <li class="nav" title="Create Post"> Create </li> </a>
-          <a href="/profile"> <li class="nav" title="Profile"> John Smith </li> </a>
-      </ul>
-  </nav> -->
-<div class="page-container">
+  <div class="page-container">
 
-  <!-- <nav id="nav">
-    <img src="images/logo.png" alt="Logo" id="logo">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/create">Create</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
-      </li>
-    </ul>
-  </nav> -->
-
-  <!-- <nav id = "nav" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Logo" id="logo"></a>
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand ml-auto" href="/">
+          <img src="images/logo.png" alt="Logo" id="logo">
+        </a>
     
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/create">Create</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-      </ul>
-    </div>
-  </nav> -->
-
-  <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand ml-auto" href="/">
-        <img src="images/logo.png" alt="Logo" id="logo">
-      </a>
-  
-      <!-- Toggler button for small screens -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <!-- Navbar links -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/create">Create</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-          </li>
-        </ul>
+        <!-- Toggler button for small screens -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/create">Create</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
   
-
-  
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/34b9210185.js" crossorigin="anonymous"></script>
-<!-- Script to highlight active tab -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<!-- Script to highlight active nav tab -->
 <script>
   // Get the current URL path
   var path = window.location.pathname;
