@@ -92,6 +92,18 @@
 #footerInfo ul {
     margin-bottom: 0px;
 }
+
+/* adjust social media icons in footer */
+.btn-floating i {
+    width: 0.5rem; /* Ensures consistent icon width */
+    height: 1.5rem; /* Ensures consistent icon height */
+    line-height: 1rem; /* Align icon height */
+    display: flex; /* Align items */
+    justify-content: center; /* Center icon horizontally */
+    align-items: center; /* Center icon vertically */
+    font-size: 1.5rem; /* Adjust icon size as needed */
+}
+
 .footerSection {
     width: 20rem;
 }

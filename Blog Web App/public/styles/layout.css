@@ -1,23 +1,13 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     color: #2A2E45;
     margin: 0;
     height: 100vh;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Roboto", sans-serif;
 }
 
-    
+/* for social media images */
 img {
     width: 1rem;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-ul {
-    list-style-type: none;
 }
