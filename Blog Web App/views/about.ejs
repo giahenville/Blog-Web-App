@@ -1,8 +1,59 @@
 
 <%- include("partials/header.ejs") %> 
-    <div class="container">
-        <h1>Hello from about.ejs!</h1>
+    <div class="about-header">
+        <div class="container">
+        <h1>About BlogBunny</h1>
+        <p>Your gateway to an exciting blogging journey!</p>
+        </div>
     </div>
-    
+
+    <div class="container about-content">
+        <h2>Our Mission</h2>
+        <p>
+        At BlogBunny, we believe that everyone has a story to tell. Our mission is to provide a user-friendly, 
+        customizable platform where you can share your thoughts, experiences, and creativity with the world. 
+        Whether you're a seasoned blogger or just starting out, BlogBunny is here to make your blogging experience 
+        effortless and enjoyable.
+        </p>
+
+        <h2>Features</h2>
+        <p>
+        BlogBunny offers a range of features designed to enhance your blogging experience:
+        <ul>
+            <li><strong>User-Friendly Interface:</strong> Our intuitive design makes it easy to create and manage your blog.</li>
+            <li><strong>Customizable Themes:</strong> Choose from a variety of themes to give your blog a unique look.</li>
+            <li><strong>Powerful Text Editor:</strong> Write, format, and publish your posts with ease using our rich text editor.</li>
+            <li><strong>Responsive Design:</strong> Your blog will look great on any device, whether it's a desktop, tablet, or mobile phone.</li>
+            <li><strong>Community Engagement:</strong> Connect with other bloggers, share your posts, and build a community around your content.</li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="container about-team">
+        <h2 class="text-center">Meet the Team</h2>
+        <div class="row">
+          <div class="col-md-4 text-center team-member">
+            <img src="https://cdn-icons-png.flaticon.com/512/9217/9217629.png" alt="Team Member 1">
+            <h5>John Doe</h5>
+            <p>Founder & CEO</p>
+          </div>
+          <div class="col-md-4 text-center team-member">
+            <img src="https://cdn-icons-png.flaticon.com/512/9217/9217629.png" alt="Team Member 2">
+            <h5>Jane Smith</h5>
+            <p>Chief Technical Officer</p>
+          </div>
+          <div class="col-md-4 text-center team-member">
+            <img src="https://cdn-icons-png.flaticon.com/512/9217/9217629.png" alt="Team Member 3">
+            <h5>Emily Johnson</h5>
+            <p>Head of Marketing</p>
+          </div>
+        </div>
+
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <%- include("partials/footer.ejs") %> 
