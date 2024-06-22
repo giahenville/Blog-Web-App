@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const posts = [];
+let posts = [];
 let totalPosts = 0;
  
 // Middleware
@@ -51,6 +51,28 @@ app.post("/submit", (req, res) => {
 
     res.redirect("/profile");
 });
+
+app.get("/post/:id", (req, res) => {
+    // get the post id from the req
+    const postId = req.params.id;
+    // find the post the user is trying to access from the posts array
+    const post = posts.find(p => p.id === postId);
+    if (post) {
+        res.render('post', {post: post});
+    } else {
+        res.status(404).send("Post not found.");
+    }
+});
+
+//Deletes post from posts array
+app.post('/delete/:id', (req, res) => {
+    const postId = req.params.id;
+    // remove the deleted item from the posts array
+    posts = posts.filter(p => p.id !== postId); 
+    // update posts count
+    totalPosts --;
+    res.redirect("/profile");
+})
 
 // Start server
 app.listen(port, () => {
