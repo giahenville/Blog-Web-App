@@ -16,6 +16,7 @@ let totalPosts = 0;
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
 
+
 // Serve Bootstrap CSS and JS from node_modules
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
@@ -58,11 +59,15 @@ app.get("/post/:id", (req, res) => {
     // find the post the user is trying to access from the posts array
     const post = posts.find(p => p.id === postId);
     if (post) {
-        res.render('post', {post: post});
+        res.render('post.ejs', {post: post});
     } else {
         res.status(404).send("Post not found.");
     }
 });
+
+// app.get("/post", (req, res) => {
+//     res.render("post.ejs")
+// })
 
 //Deletes post from posts array
 app.post('/delete/:id', (req, res) => {
