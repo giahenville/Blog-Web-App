@@ -15,7 +15,7 @@
     <!-- Dynamically creates posts -->
     <ul id="posts-list">
         <% posts.forEach((post) => { %>
-            <li class="post">
+            <li class="post" href="/post.ejs">
                 <h2 class="title"> Title: <%= post.title %></h2>
                 <h2 class="topic">Topic: <%= post.topic %></h2>
                 <span>Date Created: <%= postDate %></span>

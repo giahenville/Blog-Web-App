@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
-
+import { v4 as uuidv4 } from 'uuid';  // Import the UUID package
 
 const app = express();
 const port = 3000;
@@ -45,7 +45,7 @@ app.get("/profile", (req, res) => {
 app.post("/submit", (req, res) => {
     const { title, body, image, topic } = req.body;
 
-    const newPost = { title, body, image, topic, date : new Date().toDateString() };
+    const newPost = { id: uuidv4(), title, body, image, topic, date : new Date().toDateString() };
     posts.push(newPost);
     totalPosts++;
 
