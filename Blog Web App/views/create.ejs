@@ -1,34 +1,35 @@
 <%- include("partials/header.ejs") %>
 
-<div class="container mt-5">
-    <h1>Create New Post</h1>
-    <form action="/submit" method="POST">
-        <div class="form-group mb-3 col-md-6">
-            <label for="title">Title</label>
-            <input type="text" name="title" class="form-control" id="title" required>
-        </div>
-        <div class="form-group mb-3">
-            <label for="body">Body</label>
-            <textarea name="body" id="body" class="form-control" rows="10"></textarea>
-        </div>
-        <div class="form-group mb-3">
-            <label for="image">Image</label>
-            <input type="file" name="image" class="form-control-file" id="image">
-        </div>
-        <div class="form-group mb-3 col-md-2">
-            <label for="topic">Topic</label>
-            <select name="topic" class="form-control" id="topic">
-                <option value="Poetry">Poetry</option>
-                <option value="Life">Life</option>
-                <option value="Travel">Travel</option>
-                <option value="Technology">Technology</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-outline-dark">Create Post</button>
-    </form>
+    <div class="container mt-5">
+        <h1>Create New Post</h1>
+        <form action="/submit" method="POST">
+            <div class="form-group mb-3 col-md-6">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="title" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="body">Body</label>
+                <textarea name="body" id="body" class="form-control" rows="10"></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="image">Image</label>
+                <input type="file" name="image" class="form-control-file" id="image">
+            </div>
+            <div class="form-group mb-3 col-md-2">
+                <label for="topic">Topic</label>
+                <select name="topic" class="form-control" id="topic">
+                    <option value="Poetry">Poetry</option>
+                    <option value="Life">Life</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Technology">Technology</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Create Post</button>
+        </form>
+    </div>
+<!-- this bottom div needs to be at the bottom of all pages to keep footer at the bottom of page. it is 'page-container' class that comes from partials/header.ejs file -->
 </div>
 
-<%- include("partials/footer.ejs") %>
 
 <!-- Include CKEditor and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -52,3 +53,5 @@
             console.error(error);
         });
 </script>
+
+<%- include("partials/footer.ejs") %>
