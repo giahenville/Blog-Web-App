@@ -11,7 +11,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 let posts = [];
 let totalPosts = 0;
- 
+// state checker to see if we are editing a post
+let isEditing = false;
+let post;
+let postId;
 // Middleware
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
@@ -39,8 +42,32 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-    let postDate = new Date().toDateString();
-    res.render("profile.ejs", {posts: posts, totalPosts: totalPosts, postDate: postDate});
+    res.render("profile.ejs", {posts: posts, totalPosts: totalPosts});
+});
+
+app.get("/post/:id", (req, res) => {
+    // get the post id from the req
+    postId = req.params.id;
+    // find the post the user is trying to access from the posts array
+    post = posts.find(p => p.id === postId);
+    if (post) {
+        res.render("post.ejs", {post: post});
+    } else {
+        res.status(404).send("Post not found.");
+    }
+});
+
+app.get("/edit/:id", (req, res) => {
+    isEditing = true; 
+    // get the post id from the req
+    postId = req.params.id;
+    // find the post the user is trying to access from the posts array
+    post = posts.find(p => p.id === postId);
+    if (post) {
+        res.render("edit.ejs", {post: post, totalPosts: totalPosts, isEditing: isEditing});
+    } else {
+        res.status(404).send("Post not found.");
+    }
 });
 
 app.post("/submit", (req, res) => {
@@ -53,31 +80,38 @@ app.post("/submit", (req, res) => {
     res.redirect("/profile");
 });
 
-app.get("/post/:id", (req, res) => {
-    // get the post id from the req
-    const postId = req.params.id;
-    // find the post the user is trying to access from the posts array
-    const post = posts.find(p => p.id === postId);
-    if (post) {
-        res.render('post.ejs', {post: post});
-    } else {
-        res.status(404).send("Post not found.");
-    }
-});
-
-// app.get("/post", (req, res) => {
-//     res.render("post.ejs")
-// })
-
 //Deletes post from posts array
 app.post('/delete/:id', (req, res) => {
-    const postId = req.params.id;
+    postId = req.params.id;
     // remove the deleted item from the posts array
     posts = posts.filter(p => p.id !== postId); 
     // update posts count
     totalPosts --;
     res.redirect("/profile");
+});
+
+app.post("/update", (req, res) => {
+    // todo: get this to properly update
+    const { title, body, image, topic } = req.body;
+    postId = req.params.id;
+    
+      // Find the index of the post by id
+    const postIndex = posts.findIndex(p => p.id === postId);
+
+    if (postIndex !== -1) {
+        // Update the properties of the post
+        posts[postIndex] = {
+            ...posts[postIndex], // Spread the existing post to retain unchanged properties
+            title,
+            body,
+            image,
+            topic,
+            date: new Date().toDateString() // Update the date
+        };
+    }
+    res.redirect("/profile");
 })
+
 
 // Start server
 app.listen(port, () => {
