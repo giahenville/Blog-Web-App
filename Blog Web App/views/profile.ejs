@@ -1,53 +1,49 @@
+<%- include("partials/header.ejs") %>
 
-<%- include("partials/header.ejs") %> 
+    <div class="container mt-4">
+        <h1>Posts</h1>
+        <input type="search" placeholder="Search by title..." id="search-bar" class="form-control mr-sm-2 mb-4">
 
-  <div class="posts-container container">
-    <h1>Posts</h1>
-
-    <input type="search" placeholder="Search by title..." id="search-bar" class="form-control mr-sm-2">
-     
-    
-    <!-- Updates total posts -->
-    <% if (locals.totalPosts) {%>
-        <h4>Total Posts: <%= totalPosts %></h4>
-    <%}%>
-    
-    <!-- Dynamically creates posts -->
-    <ul id="posts-list">
-        <% posts.forEach((post) => { %>
-            <li class="post">
-                <a href="/post/<%= post.id %>"> 
-                    <h2 class="title"> Title: <%= post.title %></h2>
-                    <h2 class="topic">Topic: <%= post.topic %></h2>
-                    <span>Date Created: <%= post.date %></span>
-                </a>
+        <!-- Updates total posts -->
+        <% if (locals.totalPosts) { %>
+            <h4>Total Posts: <%= totalPosts %></h4>
+        <% } %>
             
-                <form action="/delete/<%= post.id %>" method="post">
-                    <button type="submit" class="btn btn-danger btn-sm">Delete Post</button>
-                </form>
-            </li>
-        <% }); %>
-    </ul>
-  </div>
-
-
-
+        <!-- Dynamically creates posts -->
+        <div class="row">
+            <% posts.forEach((post) => { %>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card h-100">
+                        <img src="<%= post.image || '/images/post.svg' %>" class="card-img-top img-fluid w-25 mx-auto" alt="Post Image">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center mb-4">Title: <%= post.title %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Topic: <%= post.topic %></h6>
+                            <p class="card-text">Date Created: <%= post.date %></p>
+                            <a href="/post/<%= post.id %>" class="btn btn-secondary mt-auto">View Post</a>
+                            <form action="/delete/<%= post.id %>" method="post" class="mt-2">
+                                <button type="submit" class="btn btn-danger btn-sm w-100">Delete Post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
 </div>
- <!-- Client-Side JavaScript -->
- <script>
+<script>
     document.addEventListener("DOMContentLoaded", function() {
         const searchBar = document.getElementById("search-bar");
         const postsList = document.getElementById("posts-list");
         const posts = document.getElementsByClassName("post");
 
-         // Add event listener to search bar for real-time filtering
-         searchBar.addEventListener("input", function(event) {
+        // Add event listener to search bar for real-time filtering
+        searchBar.addEventListener("input", function(event) {
             const searchText = searchBar.value.toLowerCase();
 
             // Iterate through each post
             Array.from(posts).forEach(post => {
-                const title = post.querySelector("h2.title").innerText.toLowerCase();
-                const topic = post.querySelector("h2.topic").innerText.toLowerCase();
+                const title = post.querySelector("h5.card-title").innerText.toLowerCase();
+                const topic = post.querySelector("h6.card-subtitle").innerText.toLowerCase();
                 
                 // Check if the title or topic matches the search query
                 if (title.includes(searchText) || topic.includes(searchText)) {
@@ -56,33 +52,31 @@
                     post.style.display = "none"; // Hide the post if it doesn't match
                 }
             });
-         });
-    });
+        });
 
-        // searches for posts matching the title or the author
-    searchBar.addEventListener("keyup", () => {
-        const searchText = searchBar.value.toLowerCase(); // Get the value entered in the search bar
+        // Searches for posts matching the title or the author
+        searchBar.addEventListener("keyup", () => {
+            const searchText = searchBar.value.toLowerCase(); // Get the value entered in the search bar
 
-        // Iterate through each post
-        Array.from(display.children).forEach(post => {
-            const title = post.querySelector("p.title").innerText.toLowerCase(); 
-            const author = post.querySelector("p.author").innerText.toLowerCase(); 
-            
-            // FIX when x is pressed on input, allow all books to reappear
-            if (!searchText) {
-                post.style.display = "block";
-            }
+            // Iterate through each post
+            Array.from(display.children).forEach(post => {
+                const title = post.querySelector("h5.card-title").innerText.toLowerCase();
+                const topic = post.querySelector("h6.card-subtitle").innerText.toLowerCase();
+                
+                // FIX when x is pressed on input, allow all books to reappear
+                if (!searchText) {
+                    post.style.display = "block";
+                }
 
-            // Check if the title or author matches the search query
-            if (title.includes(searchText) || author.includes(searchText)) {
-                post.style.display = "block"; // Show the post card if it matches
-            } else {
-                post.style.display = "none"; // Hide the post card if it doesn't match
-            }
+                // Check if the title or topic matches the search query
+                if (title.includes(searchText) || topic.includes(searchText)) {
+                    post.style.display = "block"; // Show the post card if it matches
+                } else {
+                    post.style.display = "none"; // Hide the post card if it doesn't match
+                }
+            });
         });
     });
-
 </script>
 
-
-<%- include("partials/footer.ejs") %> 
+<%- include("partials/footer.ejs") %>
