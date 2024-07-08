@@ -15,11 +15,10 @@ let totalPosts = 0;
 let isEditing = false;
 let post;
 let postId;
+
 // Middleware
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(express.static("public"));
-
-
 // Serve Bootstrap CSS and JS from node_modules
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
@@ -70,6 +69,7 @@ app.get("/edit/:id", (req, res) => {
     }
 });
 
+// creates new post
 app.post("/submit", (req, res) => {
     const { title, body, image, topic } = req.body;
 
