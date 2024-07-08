@@ -20,8 +20,8 @@
                         <li class="list-group-item">Date Created: <%= post.date %></li>
                     </ul>
                     <div class="card-body mx-auto">
-                        <a href="/profile" class="btn btn-primary">Back to Profile</a>
-                        <a href="/edit/<%= post.id %>" class="btn btn-warning ml-2">Edit Post</a>
+                        <a href="/profile" class="btn btn-light">Back to Profile</a>
+                        <a href="/edit/<%= post.id %>" class="btn btn-secondary ml-2">Edit Post</a>
                         <form action="/delete/<%= post.id %>" method="POST" class="d-inline">
                             <button type="submit" class="btn btn-danger ml-2">Delete Post</button>
                         </form>
