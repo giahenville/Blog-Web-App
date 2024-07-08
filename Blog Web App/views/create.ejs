@@ -37,6 +37,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
+<style>
+    .ck-editor__editable {
+        height: 300px;
+        max-height: 400px; /* Adjust max-height as needed */
+        overflow-y: auto;
+    }
+</style>
 <script>
     ClassicEditor
         .create(document.querySelector('#body'), {
