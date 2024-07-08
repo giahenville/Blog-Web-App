@@ -1,0 +1,57 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="container mt-5">
+        <h1>Edit Post</h1>
+        <form action="/update" method="POST">
+            <div class="form-group mb-3 col-md-6">
+                <label for="title">Title </label>
+                <input type="text" name="title" class="form-control" id="title" value="<%= post.title %>" >
+            </div>
+            <div class="form-group mb-3">
+                <label for="body">Body</label>
+                <textarea name="body" id="body" class="form-control" rows="10"> <%- post.body %></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="image">Image</label>
+                <input type="file" name="image" class="form-control-file" id="image" value="<%= post.image %>">
+            </div>
+            <div class="form-group mb-3 col-md-2">
+                <label for="topic">Topic</label>
+                <select name="topic" class="form-control" id="topic">
+                    <option value="Poetry" <% if (post.topic === 'Poetry') { %>selected<% } %>>Poetry</option>
+                    <option value="Life" <% if (post.topic === 'Life') { %>selected<% } %>>Life</option>
+                    <option value="Travel" <% if (post.topic === 'Travel') { %>selected<% } %>>Travel</option>
+                    <option value="Technology" <% if (post.topic === 'Technology') { %>selected<% } %>>Technology</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Update Post</button>
+        </form>
+    </div>
+<!-- this bottom div needs to be at the bottom of all pages to keep footer at the bottom of page. it is 'page-container' class that comes from partials/header.ejs file -->
+</div>
+
+
+<!-- Include CKEditor and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#body'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+                ]
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<%- include("partials/footer.ejs") %>

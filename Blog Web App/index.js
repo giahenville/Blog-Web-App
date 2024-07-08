@@ -91,9 +91,7 @@ app.post('/delete/:id', (req, res) => {
 });
 
 app.post("/update", (req, res) => {
-    // todo: get this to properly update
     const { title, body, image, topic } = req.body;
-    postId = req.params.id;
     
       // Find the index of the post by id
     const postIndex = posts.findIndex(p => p.id === postId);

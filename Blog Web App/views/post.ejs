@@ -1,24 +1,25 @@
 <%- include("partials/header.ejs") %>
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-            <div class="card">
-                <img src="<%= post.image %>" class="card-img-top" alt="Post Image">
-                <div class="card-body">
-                    <h5 class="card-title"><%= post.title %></h5>
-                    <p class="card-text"><%- post.body %></p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Topic: <%= post.topic %></li>
-                    <li class="list-group-item">Date Created: <%= post.date %></li>
-                </ul>
-                <div class="card-body">
-                    <a href="/profile" class="btn btn-primary">Back to Profile</a>
-                    <a href="/edit/<%= post.id %>" class="btn btn-warning ml-2">Edit Post</a>
-                    <form action="/delete/<%= post.id %>" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger ml-2">Delete Post</button>
-                    </form>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="card">
+                    <img src="<%= post.image %>" class="card-img-top" alt="Post Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= post.title %></h5>
+                        <p class="card-text"><%- post.body %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Topic: <%= post.topic %></li>
+                        <li class="list-group-item">Date Created: <%= post.date %></li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="/profile" class="btn btn-primary">Back to Profile</a>
+                        <a href="/edit/<%= post.id %>" class="btn btn-warning ml-2">Edit Post</a>
+                        <form action="/delete/<%= post.id %>" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger ml-2">Delete Post</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

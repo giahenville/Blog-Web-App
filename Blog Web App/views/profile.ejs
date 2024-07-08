@@ -19,7 +19,7 @@
                 <a href="/post/<%= post.id %>"> 
                     <h2 class="title"> Title: <%= post.title %></h2>
                     <h2 class="topic">Topic: <%= post.topic %></h2>
-                    <span>Date Created: <%= postDate %></span>
+                    <span>Date Created: <%= post.date %></span>
                 </a>
             
                 <form action="/delete/<%= post.id %>" method="post">
