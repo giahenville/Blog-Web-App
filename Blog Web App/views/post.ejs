@@ -2,18 +2,25 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <div class="card">
-                    <img src="<%= post.image %>" class="card-img-top" alt="Post Image">
+            <div class="col-lg-8 offset-lg-2 ">
+                <div class="card" >
+                    <% console.log(post) %>
+                    <img src="/images/default-post.png" class="card-img-top img-fluid w-25 mx-auto" alt="Post Image">
                     <div class="card-body">
-                        <h5 class="card-title"><%= post.title %></h5>
-                        <p class="card-text"><%- post.body %></p>
+                        <h5 class="card-title text-center mb-4"><%= post.title %></h5>
+                        <p class="card-text mb-4">
+                            <% if (locals.post.body.length === 0) {%>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita doloribus, ullam ducimus suscipit magni ad labore dolores, officiis quasi aperiam commodi quaerat, tempore perspiciatis deserunt ratione molestias asperiores quam et ut libero aut quae. Vel inventore in ipsum illum natus quo, nulla fuga minus qui perspiciatis error alias, quasi ullam voluptatibus nam omnis necessitatibus voluptates adipisci rerum ab, architecto cumque? Adipisci a non illo asperiores debitis, numquam, corrupti odit quisquam ex dolores ipsum. Iste sequi repellat ipsam facilis nisi atque quae numquam illum eaque minus ipsa asperiores repellendus veniam voluptates modi alias harum, natus temporibus. Quibusdam veniam vel pariatur corrupti quas repudiandae est porro, voluptates fuga deserunt hic autem! Et nisi quo voluptatibus corrupti accusantium. Exercitationem, veritatis? Atque vel earum dolorum obcaecati soluta, quam optio, odio nisi dicta qui suscipit est maiores sed. Pariatur maiores fugiat delectus quo quia! Enim quia ea aliquam repellendus dolore quod ad omnis maiores impedit id. Enim nesciunt voluptates minima sequi ratione eum provident aut sunt inventore vel ducimus et, sapiente quos assumenda, in laudantium, nihil modi! Ipsa, dolores commodi placeat voluptatibus nisi ut vel tempora mollitia.
+                                <% } else {%>
+                                    <%- post.body %>
+                                <% } %>
+                        </p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Topic: <%= post.topic %></li>
                         <li class="list-group-item">Date Created: <%= post.date %></li>
                     </ul>
-                    <div class="card-body">
+                    <div class="card-body mx-auto">
                         <a href="/profile" class="btn btn-primary">Back to Profile</a>
                         <a href="/edit/<%= post.id %>" class="btn btn-warning ml-2">Edit Post</a>
                         <form action="/delete/<%= post.id %>" method="POST" class="d-inline">
