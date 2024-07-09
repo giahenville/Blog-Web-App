@@ -4,7 +4,7 @@ Hello! This is my Blog Web Application project. This is a fully responsive full-
 
 ## Technologies Used
 - **Backend**: Node.js, Express.js
-- **Frontend**: EJS (Embedded JavaScript), jQuery, Bootstrap
+- **Frontend**: EJS (Embedded JavaScript), jQuery
 - **Styling**: CSS, Bootstrap
 - **Middleware**: body-parser, uuid
 - **Development**: nodemon
