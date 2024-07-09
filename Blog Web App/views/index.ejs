@@ -111,28 +111,45 @@
             </div>
     
             <div class="col-md-4">
-                <aside>
-                    <h4>Popular Bloggers</h4>
-                    <!-- Add your popular bloggers content here -->
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <h5><a href="#">Blogger 1</a></h5>
-                            <p class="mb-0">Brief description or bio of Blogger 1</p>
-                        </li>
-                        <li class="list-group-item">
-                            <h5><a href="#">Blogger 2</a></h5>
-                            <p class="mb-0">Brief description or bio of Blogger 2</p>
-                        </li>
-                        <li class="list-group-item">
-                            <h5><a href="#">Blogger 3</a></h5>
-                            <p class="mb-0">Brief description or bio of Blogger 3</p>
-                        </li>
-                        <!-- Add more bloggers as needed -->
-                    </ul>
-                </aside>
+              <aside class="popular-bloggers ml-lg-4">
+                <h4>Popular Bloggers</h4>
+                <div class="row">
+                    <!-- Blogger 1 -->
+                    <div class="col-md-12 mb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="/images/cooking.jpeg" alt="Blogger 1" class="rounded-circle " style="width: 50px; height: 50px;">
+                            <div>
+                                <h5 class="mb-0 ">Jacky Fenn</h5>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, animi?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 mb-3">
+                      <div class="d-flex align-items-center">
+                          <img src="/images/cooking.jpeg" alt="Blogger 1" class="rounded-circle " style="width: 50px; height: 50px;">
+                          <div>
+                              <h5 class="mb-0 ">Jacky Fenn</h5>
+                              <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, animi?</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-12 mb-3">
+                    <div class="d-flex align-items-center">
+                        <img src="/images/cooking.jpeg" alt="Blogger 1" class="rounded-circle " style="width: 50px; height: 50px;">
+                        <div>
+                            <h5 class="mb-0 ">Jacky Fenn</h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, animi?</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </aside>
+            
             </div>
-        </div>
-    </div>
+      </div>
+</div>
     
  
     
@@ -166,10 +183,34 @@
       object-fit: cover;
   }
 
+  .popular-bloggers {
+        border-left: 1px solid #ccc; /* Thin left border */
+        padding-left: 15px; /* Padding to separate content from border */
+        margin-top: 20px; /* Margin to separate from previous content */
+    }
+
+    @media (max-width: 767px) {
+        .popular-bloggers {
+            border-left: none; /* Remove left border on smaller screens */
+            border-top: 1px solid #ccc; /* Thin top border on smaller screens */
+            padding-left: 0; /* Remove padding on smaller screens */
+            margin-top: 0; /* Remove margin on smaller screens */
+        }
+    }
+
+    .blogger-profile {
+        border: 1px solid #ccc; /* Thin border around each blogger profile */
+        border-radius: 5px; /* Rounded corners */
+        margin-bottom: 10px; /* Margin between each blogger profile */
+    }
+
+    .blogger-profile img {
+        border: 2px solid #fff; /* White border around image */
+    }
 </style>
     
 
-</div>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
