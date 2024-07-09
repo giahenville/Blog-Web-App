@@ -17,4 +17,4 @@ Hello! This is my Blog Web Application project. This is a fully responsive full-
 - **Partials**: Headers and footers are reusable thanks to EJS partials.
 - **Automatic Server Refresh**: Nodemon keeps an eye on file changes and restart the server automatically.
 
-<img src="/homepage.png" width="300px"><img src="/about.png" width="300px"><img src="/create.png" alt="Demo image for library" width="300px"><img src="/profile.png" width="300px"><img src="/view.png" width="300px"><img src="/edit.png" width="300px"><img src="/search.png" width="300px">
+<img src="public/images/homepage.png" width="300px"><img src="public/images/about.png" width="300px"><img src="public/images/create.png" alt="Demo image for library" width="300px"><img src="public/images/profile.png" width="300px"><img src="public/images/view.png" width="300px"><img src="public/images/edit.png" width="300px"><img src="public/images/search.png" width="300px">
