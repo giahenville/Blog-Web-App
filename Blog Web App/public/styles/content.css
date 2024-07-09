@@ -2,29 +2,17 @@
     width: 10rem;
 }
 
-/* pushes footer on create.ejs file to the bottom of page */
-.page-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-/* profile page */
-#profile {
-    overflow-y:auto;
-}
-
 
 /* POST SLIDER */
 .slider-title {
     text-align: center;
     margin: 30px auto;
 }
+
 .slider-container {
     display: flex;
     position: relative;
     align-items: center;
-    /* margin-bottom: 1rem; */
 }
 
 .slider-container .next {
@@ -148,3 +136,4 @@
     max-height: 500px;
     overflow-y: scroll;
 }
+
