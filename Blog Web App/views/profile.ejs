@@ -1,38 +1,38 @@
 <%- include("partials/header.ejs") %>
 
-<div class="container mt-5">
-    <h1 class="text-center">Posts</h1>
-   <div class="col-lg-4">
-        <input type="search" placeholder="Search by title..." id="search-bar" class="form-control mb-4">
-   </div>
-  
+    <div class="container mt-5">
+        <h1 class="text-center">Posts</h1>
+    <div class="col-lg-4">
+            <input type="search" placeholder="Search by title..." id="search-bar" class="form-control mb-4">
+    </div>
     
-    <!-- Updates total posts -->
-    <% if (locals.totalPosts) { %>
-        <h4>Total Posts: <%= totalPosts %></h4>
-    <% } %>
         
-    <!-- Dynamically creates posts -->
-    <div class="row" id="posts-list">
-        <% posts.forEach((post) => { %>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 post">
-                <div class="card h-100">
-                    <img src="<%= post.image || '/images/post.svg' %>" class="card-img-top img-fluid w-25 mx-auto" alt="Post Image">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center mb-4">Title: <%= post.title %></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Topic: <%= post.topic %></h6>
-                        <p class="card-text">Date Created: <%= post.date %></p>
-                        <a href="/post/<%= post.id %>" class="btn btn-secondary mt-auto">View Post</a>
-                        <form action="/delete/<%= post.id %>" method="post" class="mt-2">
-                            <button type="submit" class="btn btn-danger btn-sm w-100">Delete Post</button>
-                        </form>
+        <!-- Updates total posts -->
+        <% if (locals.totalPosts) { %>
+            <h4>Total Posts: <%= totalPosts %></h4>
+        <% } %>
+            
+        <!-- Dynamically creates posts -->
+        <div class="row" id="posts-list">
+            <% posts.forEach((post) => { %>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 post">
+                    <div class="card h-100">
+                        <img src="<%= post.image || '/images/post.svg' %>" class="card-img-top img-fluid w-25 mx-auto" alt="Post Image">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center mb-4">Title: <%= post.title %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Topic: <%= post.topic %></h6>
+                            <p class="card-text"><small class="text-muted"><i class="far fa-user"></i> Gia Henville | Date: <%= post.date %></small></p>
+                            <a href="/post/<%= post.id %>" class="btn btn-secondary mt-auto">View Post</a>
+                            <form action="/delete/<%= post.id %>" method="post" class="mt-2">
+                                <button type="submit" class="btn btn-warning btn-sm w-100">Delete Post</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% }); %>
+            <% }); %>
+        </div>
     </div>
 </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const searchBar = document.getElementById("search-bar");
