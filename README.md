@@ -1,6 +1,8 @@
 # Blog Web Application
 
-Hello! This is my Blog Web Application project. This is a fully responsive full-stack web app.  Users can create, edit, view, and delete their blog posts. There is also a search feature to quickly search through created posts.
+[![Demo]](https://youtu.be/7mnrXczrBv8)
+
+Hello! This is my Blog Web Application project. This is a fully responsive full-stack web app.  Users can create, edit, view, and delete their blog posts. There is also a search feature to quickly search through created posts. 
 
 ## Technologies Used
 - **Backend**: Node.js, Express.js
