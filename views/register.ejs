@@ -1,5 +1,4 @@
 <%- include("partials/header.ejs") %>
-</div>
 
 <div class="register-container py-5">
     <div class="container">
@@ -21,6 +20,13 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-block mt-4">Register</button>
                         </form>
+
+                        <div class="text-center mt-3">
+                            <p>or</p>
+                            <a href="/auth/google" class="btn btn-danger btn-block">
+                                <i class="fab fa-google"></i> Sign in with Google
+                            </a>
+                        </div>
                     </div>
                     <div class="card-footer text-center mt-3">
                         <p>Already have an account? <a href="/login">Login here</a></p>

@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
-import { v4 as uuidv4 } from 'uuid';  // Import the UUID package
+import { v4 as uuidv4 } from "uuid"; // Import the UUID package
 import pg from "pg";
 
 import bcrypt from "bcrypt";
@@ -21,11 +21,11 @@ env.config();
 
 // to enable cookies
 app.use(
-    session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: true,
-    })
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
 );
 
 // TODO: get rid of this and make sure info comes from database
@@ -38,12 +38,18 @@ let post;
 let postId;
 
 // Middleware
-app.use(bodyParser.urlencoded( {extended: true} ));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 // Serve Bootstrap CSS and JS from node_modules
-app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
-app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
-// authentication 
+app.use(
+  "/css",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+);
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+);
+// authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -53,11 +59,11 @@ app.set("view engine", "ejs");
 
 // connect to database
 const db = new pg.Client({
-    user: process.env.PG_USER,
-    host: process.env.PG_HOST,
-    database: process.env.PG_DATABASE,
-    password: process.env.PG_PASSWORD,
-    port: process.env.PG_PORT,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
 db.connect();
 
@@ -69,29 +75,27 @@ db.connect();
 // HOME PAGE //
 ///////////////
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+  res.render("index.ejs");
 });
-
 
 ///////////
 // ABOUT //
 ///////////
 app.get("/about", (req, res) => {
-    res.render("about.ejs");
+  res.render("about.ejs");
 });
-
 
 ///////////////////////////////////////
 ////////// USER POSTS LOGIC ///////////
 ///////////////////////////////////////
 // send user to create page
 app.get("/create", (req, res) => {
-    res.render("create.ejs");
+  res.render("create.ejs");
 });
 
 // creates new post
 app.post("/submit", async (req, res) => {
-  const { title, body, topic } = req.body; // TODO: where is emaiil?
+  const { title, body, topic } = req.body;
   const email = req.user.email;
   const date = new Date().toDateString();
   totalPosts++;
@@ -102,8 +106,8 @@ app.post("/submit", async (req, res) => {
       "INSERT INTO postinfo (email, title, body, topic, date) \
       VALUES ($1, $2, $3, $4, $5)",
       [email, title, body, topic, date]
-      );
-      res.redirect("/profile");
+    );
+    res.redirect("/profile");
   } catch (err) {
     console.log(err);
   }
@@ -113,71 +117,72 @@ app.post("/submit", async (req, res) => {
 
 // find post by id
 app.get("/post/:id", (req, res) => {
-    postId = req.params.id;
-    post = posts.find(p => p.id === postId);
-    if (post) {
-        res.render("post.ejs", {post: post});
-    } else {
-        res.status(404).send("Post not found.");
-    }
+  postId = req.params.id;
+  post = posts.find((p) => p.id === postId);
+  if (post) {
+    res.render("post.ejs", { post: post });
+  } else {
+    res.status(404).send("Post not found.");
+  }
 });
 
 // edit post by id
 app.get("/edit/:id", (req, res) => {
-    isEditing = true; 
-    // get the post id from the req
-    postId = req.params.id;
-    // find the post the user is trying to access from the posts array
-    post = posts.find(p => p.id === postId);
-    if (post) {
-        res.render("edit.ejs", {post: post, totalPosts: totalPosts, isEditing: isEditing});
-    } else {
-        res.status(404).send("Post not found.");
-    }
+  isEditing = true;
+  // get the post id from the req
+  postId = req.params.id;
+  // find the post the user is trying to access from the posts array
+  post = posts.find((p) => p.id === postId);
+  if (post) {
+    res.render("edit.ejs", {
+      post: post,
+      totalPosts: totalPosts,
+      isEditing: isEditing,
+    });
+  } else {
+    res.status(404).send("Post not found.");
+  }
 });
 
 // updates post
 app.post("/update", (req, res) => {
-    const { title, body, image, topic } = req.body;
-    
-      // Find the index of the post by id
-    const postIndex = posts.findIndex(p => p.id === postId);
+  const { title, body, image, topic } = req.body;
 
-    if (postIndex !== -1) {
-        // Update the properties of the post
-        posts[postIndex] = {
-            ...posts[postIndex], // Spread the existing post to retain unchanged properties
-            title,
-            body,
-            image,
-            topic,
-            date: new Date().toDateString() // Update the date
-        };
-    }
-    res.redirect("/profile");
-})
+  // Find the index of the post by id
+  const postIndex = posts.findIndex((p) => p.id === postId);
 
-// delete post by id
-app.post('/delete/:id', (req, res) => {
-    postId = req.params.id;
-    // remove the deleted item from the posts array
-    posts = posts.filter(p => p.id !== postId); 
-    // update posts count
-    totalPosts --;
-    res.redirect("/profile");
+  if (postIndex !== -1) {
+    // Update the properties of the post
+    posts[postIndex] = {
+      ...posts[postIndex], // Spread the existing post to retain unchanged properties
+      title,
+      body,
+      image,
+      topic,
+      date: new Date().toDateString(), // Update the date
+    };
+  }
+  res.redirect("/profile");
 });
 
+// delete post by id
+app.post("/delete/:id", (req, res) => {
+  postId = req.params.id;
+  // remove the deleted item from the posts array
+  posts = posts.filter((p) => p.id !== postId);
+  // update posts count
+  totalPosts--;
+  res.redirect("/profile");
+});
 
 /////////////
 // PROFILE //
 /////////////
 app.get("/profile", async (req, res) => {
   console.log(req.user);
-  // TODO: access database and get all the posts that match the email
-  // TODO: Test this functionality!!!
-  ////////////////UPDATED GET SECRETS ROUTE/////////////////
   if (req.isAuthenticated()) {
     try {
+      // NOTE: posts come from database here
       const posts = await db.query("SELECT * FROM postinfo WHERE email = $1", [
         req.user.email,
       ]);
@@ -191,7 +196,6 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-
 ///////////
 // LOGIN //
 ///////////
@@ -199,9 +203,8 @@ app.get("/login", (req, res) => {
   res.render("login.ejs");
 });
 
-
 /////////////////////////////////////////////
-//////////// REGISTERATION LOGIC ////////////
+//////////// REGISTRATION LOGIC ////////////
 /////////////////////////////////////////////
 app.get("/register", (req, res) => {
   res.render("register.ejs");
@@ -328,7 +331,7 @@ passport.use(
         if (result.rows.length === 0) {
           const newUser = await db.query(
             "INSERT INTO logincredentials (email, password) VALUES ($1, $2)",
-            [profile.email, "google"]
+            [profile.email, "google"] 
           );
           return cb(null, newUser.rows[0]);
         } else {
