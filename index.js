@@ -99,7 +99,6 @@ app.post("/submit", async (req, res) => {
   const email = req.user.email;
   const date = new Date().toDateString();
   totalPosts++;
-
   try {
     // TODO: Create a query to insert into postinfo table
     const result = await db.query(
