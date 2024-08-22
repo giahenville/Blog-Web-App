@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { v4 as uuidv4 } from 'uuid';  // Import the UUID package
 import pg from "pg";
+
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { Strategy } from "passport-local";
@@ -51,6 +52,10 @@ app.get("/create", (req, res) => {
 
 app.get("/profile", (req, res) => {
     res.render("profile.ejs", {posts: posts, totalPosts: totalPosts});
+});
+
+app.get("/login", (req, res) => {
+    res.render("login.ejs");
 });
 
 app.get("/post/:id", (req, res) => {
