@@ -30,7 +30,7 @@ app.use(
 
 // TODO: get rid of this and make sure info comes from database
 // let posts = [];
-let totalPosts = 0;
+// let totalPosts = 0;
 
 // state checker to see if we are editing a post
 let isEditing = false;
@@ -98,7 +98,7 @@ app.post("/submit", async (req, res) => {
   const { title, body, topic } = req.body;
   const email = req.user.email;
   const date = new Date().toDateString();
-  totalPosts++;
+  // totalPosts++;
   try {
     // TODO: Create a query to insert into postinfo table
     const result = await db.query(
@@ -199,7 +199,7 @@ app.post("/delete/:id", async (req, res) => {
   const postId = req.params.id;
   try {
     await db.query("DELETE FROM postinfo WHERE id = $1", [postId]);
-    totalPosts--;
+    // totalPosts--;
     res.redirect("/profile");
   } catch (err) {
     console.log(err);
@@ -219,7 +219,7 @@ app.get("/profile", async (req, res) => {
         req.user.email,
       ]);
       console.log("posts.rows: ", posts.rows);
-      res.render("profile.ejs", { posts: posts.rows, totalPosts: totalPosts });
+      res.render("profile.ejs", { posts: posts.rows }); // TODO: add totalPosts in future
     } catch (err) {
       console.log(err);
     }
