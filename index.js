@@ -58,6 +58,10 @@ app.get("/login", (req, res) => {
     res.render("login.ejs");
 });
 
+app.get("/register", (req, res) => {
+    res.render("register.ejs");
+});
+
 app.get("/post/:id", (req, res) => {
     // get the post id from the req
     postId = req.params.id;
