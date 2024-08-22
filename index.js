@@ -232,52 +232,10 @@ app.get("/profile", async (req, res) => {
 // LOGIN //
 ///////////
 app.get("/login", (req, res) => {
+  console.log("Inside /login get route checking if req.isAuthenticated()", req.isAuthenticated())
   res.render("login.ejs");
 });
 
-/////////////////////////////////////////////
-//////////// REGISTRATION LOGIC ////////////
-/////////////////////////////////////////////
-app.get("/register", (req, res) => {
-  res.render("register.ejs");
-});
-
-app.post("/register", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-
-  try {
-    const checkResult = await db.query(
-      "SELECT * FROM logincredentials WHERE email = $1",
-      [email]
-    );
-    console.log("checkResult is:", checkResult);
-    // checks if user is already registered
-    if (checkResult.rows.length > 0) {
-      req.redirect("/login");
-    }
-    // creates new user and adds to database and encrypts password
-    else {
-      bcrypt.hash(password, saltRounds, async (err, hash) => {
-        if (err) {
-          console.error("Error hashing password:", err);
-        } else {
-          const result = await db.query(
-            "INSERT INTO  logincredentials (email, password) VALUES ($1, $2) RETURNING *",
-            [email, hash]
-          );
-          const user = result.rows[0];
-          req.login(user, (err) => {
-            console.log("success");
-            res.redirect("/profile");
-          });
-        }
-      });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 //////////////////////////////////////////////////////
 // PASSPORT MIDDLEWARE AUTHENTICATION CONFIGURATION //
@@ -299,51 +257,12 @@ app.get(
 );
 
 // authenticates user login
-app.post(
-  "/login",
+app.post("/login", 
   passport.authenticate("local", {
-    successRedirect: "/profile",
-    failureRedirect: "/login",
-  })
-);
+  successRedirect: "/profile",
+  failureRedirect: "/login",
+}));
 
-/////////////////////////////
-// SETTING UP PASSPORT USE //
-/////////////////////////////
-passport.use(
-  "local",
-  new Strategy(async function verify(email, password, cb) {
-    try {
-      console.log("looking for passwords");
-      const result = await db.query(
-        "SELECT * FROM logincredentials WHERE email = $1 ",
-        [email]
-      );
-      if (result.rows.length > 0) {
-        const user = result.rows[0];
-        const storedHashedPassword = user.password;
-        bcrypt.compare(password, storedHashedPassword, (err, valid) => {
-          if (err) {
-            console.log("Error comparing passwords:", err);
-            return cb(err);
-          } else {
-            if (valid) {
-              console.log("Password is valid!");
-              return cb(null, user);
-            } else {
-              console.log("Password is NOT valid!");
-              return cb(null, false);
-            }
-          }
-        });
-      } else {
-        return cb("User not found");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  })
-);
 
 passport.use(
   "google",
