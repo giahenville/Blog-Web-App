@@ -30,4 +30,4 @@ Hello! Welcome to my Blog Web Application project. This fully responsive full-st
 ## Coming Soon
 - **Local Sign-In**: Will be adding the option for users to sign in with a local account in the near future.
 
-<img src="public/images/homepage.png" width="300px"><img src="public/images/about.png" width="300px"><img src="public/images/create.png" alt="Demo image for library" width="300px"><img src="public/images/profile.png" width="300px"><img src="public/images/view.png" width="300px"><img src="public/images/edit.png" width="300px"><img src="public/images/search.png" width="300px">
+<img src="public/images/google-img.png" width="300px"><img src="public/images/homepage.png" width="300px"><img src="public/images/about.png" width="300px"><img src="public/images/create.png" alt="Demo image for library" width="300px"><img src="public/images/profile.png" width="300px"><img src="public/images/view.png" width="300px"><img src="public/images/edit.png" width="300px"><img src="public/images/search.png" width="300px">
