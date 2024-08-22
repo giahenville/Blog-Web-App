@@ -4,5 +4,6 @@ CREATE TABLE postInfo (
 	title TEXT NOT NULL,
 	body TEXT NOT NULL,
 	topic VARCHAR(25) NOT NULL,
+	date DATE,
 	FOREIGN KEY (email) REFERENCES loginCredentials(email);
 );
