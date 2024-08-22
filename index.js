@@ -19,6 +19,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const saltRounds = 10;
 env.config();
 
+// to enable cookies
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+    })
+);
+
 let posts = [];
 let totalPosts = 0;
 // state checker to see if we are editing a post
@@ -32,10 +41,23 @@ app.use(express.static("public"));
 // Serve Bootstrap CSS and JS from node_modules
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
+// authentication 
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Set the views directory and view engine
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+// connect to database
+const db = new pg.Client({
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: process.env.PG_PORT,
+});
+db.connect();
 
 // Routes
 app.get("/", (req, res) => {
@@ -51,6 +73,8 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
+    console.log(req.user);
+    // access database and get all the posts that match the email
     res.render("profile.ejs", {posts: posts, totalPosts: totalPosts});
 });
 
@@ -87,6 +111,52 @@ app.get("/edit/:id", (req, res) => {
     }
 });
 
+// logs in user 
+app.post(
+    "/login",
+    passport.authenticate("local", {
+      successRedirect: "/profile",
+      failureRedirect: "/login",
+    })
+  );
+
+// register new user
+app.post("/register", async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+  
+    try {
+      const checkResult = await db.query("SELECT * FROM logincredentials WHERE email = $1", [
+        email,
+      ]);
+      console.log("checkResult is:", checkResult)
+      // checks if user is already registered
+      if (checkResult.rows.length > 0) {
+        req.redirect("/login");
+      } 
+      // creates new user and adds to database and encrypts password
+      else {
+        bcrypt.hash(password, saltRounds, async (err, hash) => {
+          if (err) {
+            console.error("Error hashing password:", err);
+          } else {
+            const result = await db.query(
+              "INSERT INTO  logincredentials (email, password) VALUES ($1, $2) RETURNING *",
+              [email, hash]
+            );
+            const user = result.rows[0];
+            req.login(user, (err) => {
+              console.log("success");
+              res.redirect("/profile");
+            });
+          }
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  });
+  
 // creates new post
 app.post("/submit", (req, res) => {
     const { title, body, image, topic } = req.body;
