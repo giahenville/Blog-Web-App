@@ -111,74 +111,107 @@ app.post("/submit", async (req, res) => {
     console.log(err);
   }
 
-  res.redirect("/profile");
 });
 
+
 // find post by id
-app.get("/post/:id", (req, res) => {
-  postId = req.params.id;
-  post = posts.find((p) => p.id === postId);
-  if (post) {
-    res.render("post.ejs", { post: post });
-  } else {
-    res.status(404).send("Post not found.");
+app.get("/post/:id", async (req, res) => {
+  const postId = req.params.id;
+  try {
+    const result = await db.query("SELECT * FROM postinfo WHERE id = $1", [postId]);
+    const post = result.rows[0];
+    if (post) {
+      res.render("post.ejs", { post: post });
+    } else {
+      res.status(404).send("Post not found.");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error.");
   }
 });
 
 // edit post by id
-app.get("/edit/:id", (req, res) => {
-  isEditing = true;
-  // get the post id from the req
-  postId = req.params.id;
-  // find the post the user is trying to access from the posts array
-  post = posts.find((p) => p.id === postId);
-  if (post) {
-    res.render("edit.ejs", {
-      post: post,
-      totalPosts: totalPosts,
-      isEditing: isEditing,
-    });
-  } else {
-    res.status(404).send("Post not found.");
+// app.get("/edit/:id", (req, res) => {
+//   isEditing = true;
+//   // get the post id from the req
+//   postId = req.params.id;
+//   // find the post the user is trying to access from the posts array
+//   post = posts.find((p) => p.id === postId);
+//   if (post) {
+//     res.render("edit.ejs", {
+//       post: post,
+//       totalPosts: totalPosts,
+//       isEditing: isEditing,
+//     });
+//   } else {
+//     res.status(404).send("Post not found.");
+//   }
+// });
+// edit post by id
+app.get("/edit/:id", async (req, res) => {
+  const postId = req.params.id;
+  try {
+    const result = await db.query("SELECT * FROM postinfo WHERE id = $1", [postId]);
+    const post = result.rows[0];
+    if (post) {
+      res.render("edit.ejs", {
+        post: post,
+        isEditing: true,
+      });
+    } else {
+      res.status(404).send("Post not found.");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error.");
   }
 });
 
 // updates post
-app.post("/update", (req, res) => {
-  const { title, body, image, topic } = req.body;
+// update post FIXXXXXXXXXXX
+app.post("/update", async (req, res) => {
+  const { id, title, body, topic } = req.body;
+  const date = new Date().toDateString();
 
-  // Find the index of the post by id
-  const postIndex = posts.findIndex((p) => p.id === postId);
+  try {
+    const result = await db.query(
+      "UPDATE postinfo SET title = $1, body = $2, topic = $3, date = $4 WHERE id = $5",
+      [title, body, topic, date, id]
+    );
 
-  if (postIndex !== -1) {
-    // Update the properties of the post
-    posts[postIndex] = {
-      ...posts[postIndex], // Spread the existing post to retain unchanged properties
-      title,
-      body,
-      image,
-      topic,
-      date: new Date().toDateString(), // Update the date
-    };
+    // Check if any rows were updated
+    if (result.rowCount === 0) {
+      console.log("No rows updated.");
+      res.status(404).send("Post not found.");
+    } else {
+      res.redirect("/profile");
+    }
+  } catch (err) {
+    console.log("Error updating post:", err);
+    res.status(500).send("Server error.");
   }
-  res.redirect("/profile");
 });
 
+
 // delete post by id
-app.post("/delete/:id", (req, res) => {
-  postId = req.params.id;
-  // remove the deleted item from the posts array
-  posts = posts.filter((p) => p.id !== postId);
-  // update posts count
-  totalPosts--;
-  res.redirect("/profile");
+app.post("/delete/:id", async (req, res) => {
+  const postId = req.params.id;
+  try {
+    await db.query("DELETE FROM postinfo WHERE id = $1", [postId]);
+    totalPosts--;
+    res.redirect("/profile");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error.");
+  }
 });
 
 /////////////
 // PROFILE //
 /////////////
 app.get("/profile", async (req, res) => {
-  console.log(req.user);
+  console.log("req.user and req.isAuthenticated", req.user, req.isAuthenticated());
   if (req.isAuthenticated()) {
     try {
       // NOTE: posts come from database here
