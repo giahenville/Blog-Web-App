@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
-import { v4 as uuidv4 } from "uuid"; // Import the UUID package
 import pg from "pg";
 
 import bcrypt from "bcrypt";
@@ -28,8 +27,7 @@ app.use(
   })
 );
 
-// TODO: get rid of this and make sure info comes from database
-// let posts = [];
+
 // let totalPosts = 0;
 
 // state checker to see if we are editing a post
@@ -67,27 +65,23 @@ const db = new pg.Client({
 });
 db.connect();
 
-////////////
-// ROUTES //
-////////////
 
-///////////////
+// ROUTES //
+
 // HOME PAGE //
-///////////////
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-///////////
+
 // ABOUT //
-///////////
 app.get("/about", (req, res) => {
   res.render("about.ejs");
 });
 
-///////////////////////////////////////
+
 ////////// USER POSTS LOGIC ///////////
-///////////////////////////////////////
+
 // send user to create page
 app.get("/create", (req, res) => {
   res.render("create.ejs");
@@ -100,7 +94,6 @@ app.post("/submit", async (req, res) => {
   const date = new Date().toDateString();
   // totalPosts++;
   try {
-    // TODO: Create a query to insert into postinfo table
     const result = await db.query(
       "INSERT INTO postinfo (email, title, body, topic, date) \
       VALUES ($1, $2, $3, $4, $5)",
@@ -131,23 +124,7 @@ app.get("/post/:id", async (req, res) => {
   }
 });
 
-// edit post by id
-// app.get("/edit/:id", (req, res) => {
-//   isEditing = true;
-//   // get the post id from the req
-//   postId = req.params.id;
-//   // find the post the user is trying to access from the posts array
-//   post = posts.find((p) => p.id === postId);
-//   if (post) {
-//     res.render("edit.ejs", {
-//       post: post,
-//       totalPosts: totalPosts,
-//       isEditing: isEditing,
-//     });
-//   } else {
-//     res.status(404).send("Post not found.");
-//   }
-// });
+
 // edit post by id
 app.get("/edit/:id", async (req, res) => {
   const postId = req.params.id;
@@ -169,7 +146,6 @@ app.get("/edit/:id", async (req, res) => {
 });
 
 // updates post
-// update post FIXXXXXXXXXXX
 app.post("/update", async (req, res) => {
   const { id, title, body, topic } = req.body;
   const date = new Date().toDateString();
@@ -207,9 +183,8 @@ app.post("/delete/:id", async (req, res) => {
   }
 });
 
-/////////////
+
 // PROFILE //
-/////////////
 app.get("/profile", async (req, res) => {
   console.log("req.user and req.isAuthenticated", req.user, req.isAuthenticated());
   if (req.isAuthenticated()) {
@@ -228,18 +203,16 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-///////////
+
 // LOGIN //
-///////////
 app.get("/login", (req, res) => {
   console.log("Inside /login get route checking if req.isAuthenticated()", req.isAuthenticated())
   res.render("login.ejs");
 });
 
 
-//////////////////////////////////////////////////////
+
 // PASSPORT MIDDLEWARE AUTHENTICATION CONFIGURATION //
-//////////////////////////////////////////////////////
 app.get(
   "/auth/google",
   passport.authenticate("google", {
@@ -303,9 +276,8 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-//////////////////
+
 // START SERVER //
-//////////////////
 app.listen(port, () => {
   console.log("Blog Web App running on port ", port);
 });
