@@ -84,6 +84,7 @@ app.get("/about", (req, res) => {
 
 // send user to create page
 app.get("/create", (req, res) => {
+  // makes sure user is logged in before creating post
   if (req.isAuthenticated()) {
     res.render("create.ejs");
   }else {
@@ -99,7 +100,6 @@ app.post("/submit", async (req, res) => {
   const date = new Date().toDateString();
   // totalPosts++;
   try {
-    // makes sure user is logged in before creating post
  
     const result = await db.query(
       "INSERT INTO postinfo (email, title, body, topic, date) \
