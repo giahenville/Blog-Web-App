@@ -84,7 +84,12 @@ app.get("/about", (req, res) => {
 
 // send user to create page
 app.get("/create", (req, res) => {
-  res.render("create.ejs");
+  if (req.isAuthenticated()) {
+    res.render("create.ejs");
+  }else {
+    res.redirect("/login");
+  }
+ 
 });
 
 // creates new post
@@ -94,6 +99,8 @@ app.post("/submit", async (req, res) => {
   const date = new Date().toDateString();
   // totalPosts++;
   try {
+    // makes sure user is logged in before creating post
+ 
     const result = await db.query(
       "INSERT INTO postinfo (email, title, body, topic, date) \
       VALUES ($1, $2, $3, $4, $5)",
@@ -193,7 +200,7 @@ app.get("/profile", async (req, res) => {
       const posts = await db.query("SELECT * FROM postinfo WHERE email = $1", [
         req.user.email,
       ]);
-      console.log("posts.rows: ", posts.rows);
+      // console.log("posts.rows: ", posts.rows);
       res.render("profile.ejs", { posts: posts.rows }); // TODO: add totalPosts in future
     } catch (err) {
       console.log(err);
