@@ -1,6 +1,6 @@
 # Blog Web Application
 
-[![View Demo on YouTube Here!]](https://youtu.be/eoRHVAaXCSg)
+## [![View Demo on YouTube Here!]](https://youtu.be/eoRHVAaXCSg)
 
 Hello! Welcome to my Blog Web Application project. This fully responsive full-stack app allows users to log in and manage their blog posts—creating, editing, viewing, and deleting them with ease. User credentials and blog posts are securely stored in a database, ensuring that all information persists across login and logout sessions. To protect user data, passwords are hashed using bcrypt and further secured with multiple rounds of salting, providing robust defense against hacking attempts, even for common passwords. Additionally, the app features a search function to quickly filter and find specific posts.
 
