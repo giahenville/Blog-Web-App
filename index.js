@@ -38,6 +38,8 @@ let postId;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+
 // Serve Bootstrap CSS and JS from node_modules
 app.use(
   "/css",
@@ -65,7 +67,11 @@ const db = new pg.Client({
 });
 db.connect();
 
-
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user; // Optional: pass the user object to the template
+  next();
+});
 // ROUTES //
 
 // HOME PAGE //
@@ -215,6 +221,16 @@ app.get("/profile", async (req, res) => {
 app.get("/login", (req, res) => {
   console.log("Inside /login get route checking if req.isAuthenticated()", req.isAuthenticated())
   res.render("login.ejs");
+});
+
+// LOGOUT //
+app.get("/logout", (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 });
 
 // REGISTER //
