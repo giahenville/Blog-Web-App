@@ -24,10 +24,8 @@ Hello! Welcome to my Blog Web Application project. This fully responsive full-st
 - **Environment Variables**: Secured important development information using environment variables to prevent exposure of sensitive data.
 - **Database Integration**: Added a database to store user credentials and posts, ensuring data persistence and security.
 - **Google OAuth**: Users can sign in using their Google accounts for a seamless and secure authentication experience.
+- **Local Sign-In**: Added support for local user sign-in with email and password.
 - **Password Security**: User passwords are securely hashed and stored using bcrypt, with rounds of salting to further protect against hacking attempts.
 - **User Authentication**: Implemented user authentication using Passport, enabling secure login and session management.
-
-## Coming Soon
-- **Local Sign-In**: Will be adding the option for users to sign in with a local account in the near future.
 
 <img src="public/images/google-img.png" width="300px"><img src="public/images/homepage.png" width="300px"><img src="public/images/about.png" width="300px"><img src="public/images/create.png" alt="Demo image for library" width="300px"><img src="public/images/profile.png" width="300px"><img src="public/images/view.png" width="300px"><img src="public/images/edit.png" width="300px"><img src="public/images/search.png" width="300px">
