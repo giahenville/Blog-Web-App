@@ -217,7 +217,50 @@ app.get("/login", (req, res) => {
   res.render("login.ejs");
 });
 
+// REGISTER //
+app.get("/register", (req, res) => {
+  res.render("register.ejs");
+});
 
+app.post("/register", async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  try {
+    const checkResult = await db.query("SELECT * FROM logincredentials WHERE email = $1", [
+      email,
+    ]);
+
+    if (checkResult.rows.length > 0) {
+      console.log("User is already registered. Try logging in.");
+      res.redirect("/login");
+    } else {
+      bcrypt.hash(password, saltRounds, async (err, hash) => {
+        if (err) {
+          console.error("Error hashing password:", err);
+        } else {
+          const result = await db.query(
+            "INSERT INTO logincredentials (email, password) VALUES ($1, $2) RETURNING *",
+            [email, hash]
+          );
+          const user = result.rows[0];
+          req.login(user, (err) => {
+            if(err) {
+              console.error("Login Failed:", err);
+              res.redirect("/login");
+            }else {
+              console.log("success");
+              res.redirect("profile.ejs");
+            }
+            
+          });
+        }
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 // PASSPORT MIDDLEWARE AUTHENTICATION CONFIGURATION //
 app.get(
