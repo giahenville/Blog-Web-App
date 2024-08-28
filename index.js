@@ -72,13 +72,13 @@ app.use((req, res, next) => {
   res.locals.user = req.user; // Optional: pass the user object to the template
   next();
 });
+
 // ROUTES //
 
 // HOME PAGE //
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
-
 
 // ABOUT //
 app.get("/about", (req, res) => {
@@ -303,13 +303,6 @@ app.get(
 );
 
 // authenticates user login
-// TODO: for some reason, this is failing and redirecting user to /login
-// app.post("/login", 
-//   passport.authenticate("local", {
-//   successRedirect: "/profile",
-//   failureRedirect: "/login",
-// }));
-
 app.post("/login", (req, res, next) => {
   console.log("Login route hit");
   next();
