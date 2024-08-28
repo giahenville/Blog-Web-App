@@ -233,6 +233,13 @@ app.post("/register", async (req, res) => {
 
     if (checkResult.rows.length > 0) {
       console.log("User is already registered. Try logging in.");
+      // alerts user to login if email is already registered
+      res.send(`
+        <script>
+          alert("User is already registered. Try logging in.");
+          window.location.href = "/login";
+        </script>
+      `);
       res.redirect("/login");
     } else {
       bcrypt.hash(password, saltRounds, async (err, hash) => {
@@ -280,11 +287,58 @@ app.get(
 );
 
 // authenticates user login
-app.post("/login", 
-  passport.authenticate("local", {
+// TODO: for some reason, this is failing and redirecting user to /login
+// app.post("/login", 
+//   passport.authenticate("local", {
+//   successRedirect: "/profile",
+//   failureRedirect: "/login",
+// }));
+
+app.post("/login", (req, res, next) => {
+  console.log("Login route hit");
+  next();
+}, passport.authenticate("local", {
   successRedirect: "/profile",
   failureRedirect: "/login",
 }));
+
+// Passport local strategy
+passport.use("local",
+  new Strategy({ usernameField: 'email' }, async function verify(email, password, cb) {
+    console.log("Inside passport local strategy")
+    try {
+      // check if user is registered
+      const result = await db.query("SELECT * FROM logincredentials WHERE email = $1 ", [
+        email,
+      ]);
+      console.log("result length is:", result.rows.length);
+      if (result.rows.length > 0) {
+        console.log("Inside passport local. User found in database. Going to compare user entered password with database stored password. result length is:", result.rows.length);
+        const user = result.rows[0];
+        const storedHashedPassword = user.password;
+        bcrypt.compare(password, storedHashedPassword, (err, valid) => {
+          if (err) {
+            //Error with password check
+            console.error("Error comparing passwords:", err);
+            return cb(err);
+          } else {
+            if (valid) {
+              //Passed password check
+              return cb(null, user, { message: "Incorrect password." });
+            } else {
+              //Did not pass password check
+              return cb(null, false);
+            }
+          }
+        });
+      } else {
+        return cb("User not found");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  })
+);
 
 
 passport.use(
